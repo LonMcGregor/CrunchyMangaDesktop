@@ -1,0 +1,13 @@
+#showmedia_mangareader_container {
+    position: fixed;
+    left: 0px;
+    top: 70px;
+    height: -webkit-calc(100% - 70px);
+    width: 100vw;
+    z-index: 99999;
+}
+
+#showmedia_videoplayer_object, #showmedia_videoplayer_object embed {
+    width: 100%;
+    height: 100%;
+}
