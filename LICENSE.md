@@ -1,4 +1,4 @@
-#Crunchyroll is it's own company. I do not claim to work for them as employee, under contract for them, or otherwise.
+#Crunchyroll is its own company. I do not claim to work for them as employee, under contract for them, or otherwise.
 
 I am a customer of theirs making use of their web-accessible API to make an extension to more easily use their website.
 

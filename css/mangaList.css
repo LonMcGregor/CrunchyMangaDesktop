@@ -1,0 +1,16 @@
+#cmdBooks {
+    max-height: 500px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+.cmdBookmarkItem {
+    height: 20px;
+    overflow: hidden;
+    width: 100%;
+    padding: 4px;
+    margin: 1px;
+    background: white;
+}
+.cmdBookTitle {
+    font-weight: bold;
+}
