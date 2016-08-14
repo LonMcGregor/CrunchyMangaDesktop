@@ -1,20 +1,24 @@
+/*
+Crunchy Manga Desktop
+By LonMcGregor
+See https://github.com/LonMcGregor/CrunchyMangaDesktop/
+*/
+"use strict";
 
-/*if (!chrome.cookies) {
-  chrome.cookies = chrome.experimental.cookies;
-}
+/* Get User ID */
+var USERID = -1;
+var db = chrome.storage.sync;
+if(db==null) db=chrome.storage.local;
+db.get({ userid: '-1' }, function(items) {
+  USERID = items.userid;
+});
 
-var userid = null;
-chrome.cookies.get(
-  {url:'.crunchyroll.com', name:'c_userid'},
-  function(c){userid = c.Value;}
-);  */
-var userid = ; /*DO NOT COMMIT THIS*/
-
+/* Static Definitions */
 var DEVICE = 'com.crunchyroll.manga.android';
 var VER = '1.0';
 var CONTENT = 'jp_manga'
 var API = 'http://api-manga.crunchyroll.com/';
-var GET = '?method=get&device_type='+DEVICE+'&api_ver='+VER+'&content_type='+CONTENT+'&user_id='+userid;
+var GET = '?method=get&device_type='+DEVICE+'&api_ver='+VER+'&content_type='+CONTENT+'&user_id='+USERID;
 var MANGA_PREFIX = 'http://www.crunchyroll.com/comics/manga';
 var MANGA_SUFFIX = '/volumes';
 
@@ -31,6 +35,7 @@ var getBooks = API+'bookmark'+GET;
 
 var MANGA_HOME = 'http://www.crunchyroll.com/comics/manga';
 
+/* Actions */
 function ShowFavs(data){
     var favs = JSON.parse(data);
     $('<p class="medium-margin-bottom"></p>').prependTo(CR_FAV_CONT_JQ);
@@ -82,7 +87,8 @@ function AddBookmarkItem(book){
     $(item).appendTo(BOOKS_BOX_JQ);
 }
 
-if(window.location.href==MANGA_HOME){
+/* Run */
+if(USERID!=-1 && window.location.href==MANGA_HOME){
 $.get(getFavs, ShowFavs);
 $.get(getBooks, ShowBooks);
 }
